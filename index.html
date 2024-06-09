@@ -347,7 +347,7 @@
                         busMarker.on('click', function () {
                             shouldFollowMarker = true;
                             document.querySelector('.follow-marker-button').style.backgroundColor = 'white';
-                            map.flyTo(presentBusLocation, 19, {
+                            map.setView(presentBusLocation, 19, {
                                 animate: true,
                             });
                         });
@@ -401,7 +401,7 @@
             shouldFollowMarker = true;
             console.log(shouldFollowMarker);
             document.querySelector('.follow-marker-button').style.backgroundColor = 'white';
-            map.flyTo(presentBusLocation, 19, {
+            map.setView(presentBusLocation, 19, {
                 animate: true,
             });
         }
@@ -435,7 +435,7 @@
                 }).addTo(map);
 
                 sourceMarker.on('click', function () {
-                    map.flyTo(sourceLocation, 19, {
+                    map.setView(sourceLocation, 19, {
                         animate: true,
                     });
                 });
@@ -450,11 +450,10 @@
                 }).addTo(map);
 
                 destinationMarker.on('click', function () {
-                    map.flyTo(destinationLocation, 19, {
+                    map.setView(destinationLocation, 19, {
                         animate: true,
                     });
                 });
-                
             })
             .catch(error => console.error('Error fetching coordinates.json:', error));
 
@@ -467,7 +466,7 @@
         }).addTo(map);
 
         studentStopMarker.on('click', function () {
-            map.flyTo(studentStopLocation, 19, {
+            map.setView(studentStopLocation, 19, {
                 animate: true,
             });
         });
