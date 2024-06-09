@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <style>
-        body {
+        html,body {
             font-family: 'Manrope', sans-serif;
             margin: 0;
             padding: 0;
             color: black;
             font-size: 15px;
-            height: 100vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -52,6 +52,16 @@
             height: 24px;
         }
 
+        .update-from-to {
+            font-family: 'Manrope', sans-serif;
+            text-align: center;
+            padding: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            border-top: 1px solid black;
+        }
+
+
         .info-panel {
             display: flex;
             justify-content: space-between;
@@ -83,6 +93,7 @@
 
         .map-section {
             flex: 1;
+            display: flex;
         }
 
         #map {
@@ -203,6 +214,9 @@
             <img class="logo" src="img/logo.svg" alt="Logo" onclick="window.location.href='index.html';">
             <img class="change" src="img/change.svg" alt="Change" onclick="window.location.href='index.html';">
             <img class="settings" src="img/settings.svg" alt="Settings" onclick="window.location.href='index.html';">
+        </div>
+        <div class="update-from-to">
+            <span id="routeText">To BusStop</span>
         </div>
         <div class="info-panel">
             <div class="info-item">
@@ -440,6 +454,7 @@
                         animate: true,
                     });
                 });
+                
             })
             .catch(error => console.error('Error fetching coordinates.json:', error));
 
@@ -477,6 +492,7 @@
             const buttonText = document.getElementById("buttonText");
             const toggleContent = document.getElementById("toggleContent");
             const toggleSwitch = document.getElementById("toggleSwitch");
+            const routeText = document.getElementById("routeText"); // Add this line
 
             isInBusButton.addEventListener("click", function () {
                 if (isInBusButton.classList.contains("expanded")) {
@@ -493,12 +509,17 @@
             toggleSwitch.addEventListener("change", function () {
                 if (toggleSwitch.checked) {
                     toLocation = [...destinationLocation];
+                    routeText.textContent = "To College"; // Update text
+                    fetchBusLocation();
                 } else {
                     toLocation = [...studentStopLocation];
+                    routeText.textContent = "To BusStop"; // Update text
+                    fetchBusLocation();
                 }
                 console.log(toLocation);
             });
         });
+
     </script>
 </body>
 
