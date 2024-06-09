@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <style>
-        html,body {
+        html,
+        body {
             font-family: 'Manrope', sans-serif;
             margin: 0;
             padding: 0;
@@ -346,9 +347,13 @@
 
                         busMarker.on('click', function () {
                             shouldFollowMarker = true;
+                            polyline.setStyle({ weight: 0 });
                             document.querySelector('.follow-marker-button').style.backgroundColor = 'white';
-                            map.setView(presentBusLocation, 19, {
+                            map.flyTo(presentBusLocation, 19, {
                                 animate: true,
+                            });
+                            map.once('zoomend', function () {
+                                polyline.setStyle({ weight: 2 });
                             });
                         });
                     } else {
@@ -400,9 +405,13 @@
         function toggleFollowMarker() {
             shouldFollowMarker = true;
             console.log(shouldFollowMarker);
+            polyline.setStyle({ weight: 0 });
             document.querySelector('.follow-marker-button').style.backgroundColor = 'white';
-            map.setView(presentBusLocation, 19, {
+            map.flyTo(presentBusLocation, 19, {
                 animate: true,
+            });
+            map.once('zoomend', function () {
+                polyline.setStyle({ weight: 2 });
             });
         }
 
@@ -417,12 +426,13 @@
 
         var sourceLocation;
         var destinationLocation;
+        var polyline;
 
         fetch('coordinates.json')
             .then(response => response.json())
             .then(data => {
                 var coordinates = data;
-                var polyline = L.polyline(coordinates, { color: 'black', weight: 2 }).addTo(map);
+                polyline = L.polyline(coordinates, { color: 'black', weight: 2 }).addTo(map);
                 map.fitBounds(polyline.getBounds(), { padding: [15, 15] });
 
                 sourceLocation = coordinates[0];
@@ -435,8 +445,12 @@
                 }).addTo(map);
 
                 sourceMarker.on('click', function () {
-                    map.setView(sourceLocation, 19, {
+                    polyline.setStyle({ weight: 0 });
+                    map.flyTo(sourceLocation, 19, {
                         animate: true,
+                    });
+                    map.once('zoomend', function () {
+                        polyline.setStyle({ weight: 2 });
                     });
                 });
 
@@ -450,10 +464,16 @@
                 }).addTo(map);
 
                 destinationMarker.on('click', function () {
-                    map.setView(destinationLocation, 19, {
+                    polyline.setStyle({ weight: 0 });
+                    map.flyTo(destinationLocation, 19, {
                         animate: true,
                     });
+                    map.once('zoomend', function () {
+                        polyline.setStyle({ weight: 2 });
+                    });
                 });
+
+
             })
             .catch(error => console.error('Error fetching coordinates.json:', error));
 
@@ -466,8 +486,12 @@
         }).addTo(map);
 
         studentStopMarker.on('click', function () {
-            map.setView(studentStopLocation, 19, {
+            polyline.setStyle({ weight: 0 });
+            map.flyTo(studentStopLocation, 19, {
                 animate: true,
+            });
+            map.once('zoomend', function () {
+                polyline.setStyle({ weight: 2 });
             });
         });
 
