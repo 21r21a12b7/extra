@@ -4,11 +4,12 @@
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#ffffff",
+    "theme_color": "#000000",
+    "description": "A simple Progressive Web App example.",
     "icons": [
         {
             "src": "/icons/icon.png",
-            "sizes": "192x192",
+            "sizes": "1682x682",
             "type": "image/png"
         }
     ]
