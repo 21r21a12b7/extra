@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex; /* Center content vertically and horizontally */
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+        .container {
+            width: 100%;
+            max-width: 360px; /* Max width for larger screens */
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background-color: #ffffff; /* Slightly off-white background */
+            /* box-shadow: 0 0 10px rgba(0,0,0,0.1); Subtle shadow for better contrast */
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; /* Space below header */
+        }
+        .header img {
+            height: 120px;
+            width: auto;
+        }
+        .note {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .note h3 {
+            font-size: 16px; /* Adjust font size for readability */
+            color: #333; /* Dark grey color for text */
+            margin: 0; /* Remove default margin */
+        }
+        .content-container {
+            padding: 10px;
+        }
+        .text-container {
+            text-align: center;
+            margin-bottom: 20px; /* Space below text */
+        }
+        .text-container h2 {
+            font-size: 18px;
+            margin: 0;
+            color: #444; /* Slightly lighter grey for text */
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button-container button {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .button-container img {
+            height: 60px;
+            width: auto;
+        }
+        .help-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px; /* Space above help link */
+        }
+        .help-link {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .alert {
+            border: 2px solid #000;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff3cd; /* Light yellow background */
+            color: #856404; /* Dark yellow color for text */
+        }
+        .alert img {
+            height: 25px;
+            width: auto;
+        }
+        .alert p {
+            margin-top: 10px;
+            font-size: 16px;
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .header img {
+                height: 100px; /* Adjust logo size for smaller screens */
+            }
+            .note h3 {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+            .text-container h2 {
+                font-size: 16px; /* Adjust font size for smaller screens */
+            }
+            .button-container img {
+                height: 50px; /* Adjust button size for smaller screens */
+            }
+            .alert {
+                padding: 10px; /* Adjust padding for smaller screens */
+            }
+            .alert img {
+                height: 20px; /* Adjust image size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logoMain.svg" alt="Logo">
+        </div>
+        <div class="note">
+            <h3>Your destination for seamless Bus Tracking</h3>
+                <h3>— Anytime, Anywhere.</h3>
+        </div>
+        <div class="content-container">
+            <div class="text-container">
+                <h2>Install App</h2>
+            </div>
+            <div class="button-container">
+                <button id="download-pwa">
+                    <img src="download.svg" alt="Download PWA">
+                </button>
+            </div>
+        </div>
+        <div class="help-wrapper">
+            <a href="#" class="help-link" onclick="openHelpPage()">help?</a>
+        </div>
+        <div class="alert">
+            <img src="alert.png" alt="Alert"> <br>
+            <p>Use <b>Google Chrome</b> Only !!</p>
+        </div>
+    </div>
+</body>
+<script>
+    function openHelpPage() {
+        window.location.href = 'help.html';
+    }
+</script>
+</html>
