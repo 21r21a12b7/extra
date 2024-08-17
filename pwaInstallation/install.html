@@ -204,7 +204,7 @@
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the PWA prompt');
+                    alert('Installing App ... ');
                 } else {
                     console.log('User dismissed the PWA prompt');
                 }
